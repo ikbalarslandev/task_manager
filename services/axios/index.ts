@@ -1,5 +1,4 @@
 import axios from "axios";
-import Cookies from "js-cookie";
 
 const baseURL = "https://api.management.parse25proje.link/api";
 
@@ -12,14 +11,6 @@ const axiosInstance = axios.create({
     "Access-Control-Allow-Origin": "*",
   },
 });
-
-const getToken = () => {
-  return Cookies.get("userToken");
-};
-
-const clearToken = () => {
-  Cookies.remove("userToken");
-};
 
 const request = (credentials: {
   type: "get" | "put" | "post" | "delete";
@@ -35,7 +26,7 @@ const request = (credentials: {
 const taskRequest = (credentials: {
   type: "get" | "put" | "post" | "delete";
   endpoint: string;
-  data?: any;
+  data: any;
   token: any;
 }) => {
   return axiosInstance[credentials.type](
@@ -49,4 +40,4 @@ const taskRequest = (credentials: {
   );
 };
 
-export { request, taskRequest, getToken, clearToken, axiosInstance };
+export { request, taskRequest, axiosInstance };

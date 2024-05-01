@@ -1,24 +1,13 @@
 "use client";
 
-import { update } from "@/services/tasks";
+import { deleteTask } from "@/services/tasks";
 import { useCookie } from "@/hooks/useCookie";
 
 export default function Home() {
   const { getCookie } = useCookie();
 
   const handleClick = () => {
-    update(
-      getCookie("userToken"),
-      {
-        name: "string",
-        description: "string",
-        boardId: 1,
-        flagId: 1,
-        startDate: "2024-02-15T10:00:00",
-        endDate: "2024-02-20T10:00:00",
-      },
-      6
-    )
+    deleteTask(getCookie("userToken"), 70)
       .then((res) => console.log(res))
       .catch((err) => console.log(err));
   };

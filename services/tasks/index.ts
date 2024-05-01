@@ -1,4 +1,4 @@
-import { taskRequest } from "@/services/axios";
+import { taskRequest, axiosInstance } from "@/services/axios";
 
 const create = async (token: any, data: any) => {
   try {
@@ -32,10 +32,10 @@ const update = async (token: any, data: any, code: any) => {
 
 const deleteTask = async (token: any, code: any) => {
   try {
-    const response = await taskRequest({
-      type: "delete",
-      endpoint: `tasks/${code}`,
-      token,
+    const response = await axiosInstance.delete(`/tasks/${code}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
     });
 
     return response.data;
