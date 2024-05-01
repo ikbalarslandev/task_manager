@@ -6,7 +6,7 @@ export default function Home() {
   const { getCookie } = useCookie();
 
   const handleClick = () => {
-    flags(getCookie("userToken"))
+    flags(getCookie("userToken")!)
       .then((res) => console.log(res.data))
       .catch((err) => console.log(err));
   };

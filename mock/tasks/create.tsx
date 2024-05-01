@@ -7,7 +7,7 @@ export default function Home() {
   const { getCookie } = useCookie();
 
   const handleClick = () => {
-    create(getCookie("userToken"), {
+    create(getCookie("userToken")!, {
       name: "string",
       description: "string",
       boardId: 1,

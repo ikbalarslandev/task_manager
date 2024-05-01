@@ -7,7 +7,7 @@ export default function Home() {
   const { getCookie } = useCookie();
 
   const handleClick = () => {
-    boards(getCookie("userToken"))
+    boards(getCookie("userToken")!)
       .then((res) => console.log(res.data))
       .catch((err) => console.log(err));
   };

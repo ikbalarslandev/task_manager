@@ -8,7 +8,7 @@ export default function Home() {
 
   const handleClick = () => {
     update(
-      getCookie("userToken"),
+      getCookie("userToken")!,
       {
         name: "string",
         description: "string",

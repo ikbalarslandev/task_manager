@@ -1,6 +1,7 @@
 import { request } from "@/services/axios";
+import { ILoginUserData, IRegisterUserData } from "./types";
 
-const login = async (userData: any) => {
+const login = async (userData: ILoginUserData) => {
   return await request({
     type: "post",
     endpoint: "auth/login",
@@ -8,7 +9,7 @@ const login = async (userData: any) => {
   });
 };
 
-const register = async (userData: any) => {
+const register = async (userData: IRegisterUserData) => {
   return await request({
     type: "post",
     endpoint: "auth/register",
@@ -16,7 +17,7 @@ const register = async (userData: any) => {
   });
 };
 
-const profile = async (token: any) => {
+const profile = async (token: string) => {
   return await request({
     type: "get",
     endpoint: "auth/profile",

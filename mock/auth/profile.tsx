@@ -6,7 +6,7 @@ export default function Home() {
   const { getCookie } = useCookie();
 
   const handleClick = () => {
-    profile(getCookie("userToken"))
+    profile(getCookie("userToken")!)
       .then((res) => console.log(res.data))
       .catch((err) => console.log(err));
   };

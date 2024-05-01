@@ -1,6 +1,6 @@
 import { request } from "@/services/axios";
 
-const boards = async (token: any) => {
+const boards = async (token: string) => {
   return await request({
     type: "get",
     endpoint: "boards",

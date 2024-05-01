@@ -1,6 +1,7 @@
 import { taskRequest, axiosInstance } from "@/services/axios";
+import { ITaskData } from "./types";
 
-const create = async (token: any, data: any) => {
+const create = async (token: string, data: ITaskData) => {
   try {
     const response = await taskRequest({
       type: "post",
@@ -15,7 +16,7 @@ const create = async (token: any, data: any) => {
   }
 };
 
-const update = async (token: any, data: any, code: any) => {
+const update = async (token: string, data: ITaskData, code: number) => {
   try {
     const response = await taskRequest({
       type: "put",
@@ -30,7 +31,7 @@ const update = async (token: any, data: any, code: any) => {
   }
 };
 
-const deleteTask = async (token: any, code: any) => {
+const deleteTask = async (token: string, code: number) => {
   try {
     const response = await axiosInstance.delete(`/tasks/${code}`, {
       headers: {
