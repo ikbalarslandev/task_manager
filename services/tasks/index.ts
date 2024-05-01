@@ -1,31 +1,47 @@
-import { taskRequest, axiosInstance } from "@/services/axios";
+import { taskRequest } from "@/services/axios";
 
-// const create = async (token: any, data: any) => {
-//   await taskRequest({
-//     type: "post",
-//     endpoint: "tasks",
-//     data: { ...data },
-//     token: token,
-//   });
-// };
 const create = async (token: any, data: any) => {
-  await axiosInstance.post(
-    `tasks`,
-    { ...data },
-    {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    }
-  );
-};
-const update = async (token: any, data: any, code: any) => {
-  await taskRequest({
-    type: "put",
-    endpoint: `tasks/${code}`,
-    data: { ...data },
-    token: token,
-  });
+  try {
+    const response = await taskRequest({
+      type: "post",
+      endpoint: "tasks",
+      data,
+      token,
+    });
+
+    return response.data;
+  } catch (error) {
+    return error;
+  }
 };
 
-export { create, update };
+const update = async (token: any, data: any, code: any) => {
+  try {
+    const response = await taskRequest({
+      type: "put",
+      endpoint: `tasks/${code}`,
+      data,
+      token,
+    });
+
+    return response.data;
+  } catch (error) {
+    return error;
+  }
+};
+
+const deleteTask = async (token: any, code: any) => {
+  try {
+    const response = await taskRequest({
+      type: "delete",
+      endpoint: `tasks/${code}`,
+      token,
+    });
+
+    return response.data;
+  } catch (error) {
+    return error;
+  }
+};
+
+export { create, update, deleteTask };
