@@ -1,5 +1,3 @@
-"use client";
-
 import { CardWrapper } from "./card-wrapper";
 import { Input } from "@/components/ui/input";
 import { useForm } from "react-hook-form";
@@ -16,38 +14,36 @@ import { FormSuccess } from "./form-success";
 import { useState } from "react";
 import { Button } from "../ui/button";
 import * as z from "zod";
-import { LoginSchema } from "@/schemas";
+import { registerSchema } from "@/schemas";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { login } from "@/services/auth";
-import { useCookie } from "@/hooks/useCookie";
+import { register } from "@/services/auth";
 import { useRouter } from "next/navigation";
 
-const LoginForm = () => {
+const RegisterForm = () => {
   const [error, setError] = useState<string | undefined>("");
   const [success, setSuccess] = useState<string | undefined>("");
 
-  const { setCookie } = useCookie();
   const router = useRouter();
 
-  const form = useForm<z.infer<typeof LoginSchema>>({
-    resolver: zodResolver(LoginSchema),
+  const form = useForm<z.infer<typeof registerSchema>>({
+    resolver: zodResolver(registerSchema),
     defaultValues: {
+      fullName: "",
       email: "",
       password: "",
     },
   });
 
-  const onSubmit = (values: z.infer<typeof LoginSchema>) => {
+  const onSubmit = (values: z.infer<typeof registerSchema>) => {
     setError("");
     setSuccess("");
 
-    login(values)
+    register(values)
       .then((res) => {
         if (res?.data.status) {
           form.reset();
-          setSuccess("Login successful. Redirecting...");
-          setCookie("userToken", res.data.data.token);
-          router.push("/");
+          setSuccess("Registration successful. Redirecting...");
+          router.push("/login");
         } else {
           form.reset();
           setError("Invalid email or password");
@@ -57,10 +53,23 @@ const LoginForm = () => {
   };
 
   return (
-    <CardWrapper type="login">
+    <CardWrapper type="register">
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)}>
           <div className="mb-4 flex flex-col gap-2">
+            <FormField
+              control={form.control}
+              name="fullName"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel htmlFor="fullName">Name</FormLabel>
+                  <FormControl>
+                    <Input {...field} id="fullName" placeholder="john doe" />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
             <FormField
               control={form.control}
               name="email"
@@ -101,7 +110,7 @@ const LoginForm = () => {
           <FormSuccess message={success} />
 
           <Button type="submit" className="w-full mt-2">
-            Login
+            Register
           </Button>
         </form>
       </Form>
@@ -109,4 +118,4 @@ const LoginForm = () => {
   );
 };
 
-export default LoginForm;
+export default RegisterForm;
