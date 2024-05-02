@@ -1,4 +1,3 @@
-"use client";
 import { useCookie } from "@/hooks/useCookie";
 
 export default function Home() {
