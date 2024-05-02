@@ -11,8 +11,6 @@ export function middleware(req: NextRequest) {
   const userToken = req.cookies.get("userToken")?.value;
   const isLoggedIn = !!userToken;
 
-  console.log("token", userToken);
-
   if (isAuthRoute) {
     if (isLoggedIn) {
       return NextResponse.redirect(new URL(DEFAULT_LOGIN_REDIRECT, nextUrl));

@@ -1,18 +1,14 @@
 "use client";
-
+import { profile } from "@/services/auth";
 import { useCookie } from "@/hooks/useCookie";
-import { login } from "@/services/auth";
 
 export default function Home() {
-  const { setCookie } = useCookie();
+  const { getCookie } = useCookie();
 
   const handleClick = () => {
-    login({
-      email: "tesst@example.com",
-      password: "password",
-    }).then((res: any) => {
-      setCookie("userToken", res.data.data.token);
-    });
+    profile(getCookie("userToken")!)
+      .then((res) => console.log(res.data))
+      .catch((err) => console.log(err));
   };
 
   return (
