@@ -1,4 +1,4 @@
 export const authRoutes = ["/login", "/register"];
-export const publicRoutes = ["/login"];
+export const publicRoutes = ["/"];
 
-export const DEFAULT_LOGIN_REDIRECT = "/";
+export const DEFAULT_LOGIN_REDIRECT = "/dashboard";

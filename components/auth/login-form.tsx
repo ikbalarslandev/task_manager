@@ -47,7 +47,7 @@ const LoginForm = () => {
           form.reset();
           setSuccess("Login successful. Redirecting...");
           setCookie("userToken", res.data.data.token);
-          router.push("/");
+          router.push("/dashboard");
         } else {
           form.reset();
           setError("Invalid email or password");
