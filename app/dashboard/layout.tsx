@@ -1,6 +1,6 @@
 import HeaderComponent from "@/components/dashboard/header";
 import SideBarComponent from "@/components/dashboard/sidebar";
-import ContentCover from "@/components/dashboard/content/content-cover";
+import ContentWraper from "@/components/dashboard/content/content-wraper";
 
 export default function DashboardLayout({
   children,
@@ -12,7 +12,7 @@ export default function DashboardLayout({
       <HeaderComponent />
       <div className="flex flex-1">
         <SideBarComponent />
-        <ContentCover>{children}</ContentCover>
+        <ContentWraper>{children}</ContentWraper>
       </div>
     </main>
   );

@@ -1,10 +1,10 @@
 import { Button } from "@/components/ui/button";
 
-interface ContentCoverProps {
+interface ContentWraperProps {
   children: React.ReactNode;
 }
 
-const ContentCover = ({ children }: ContentCoverProps) => {
+const ContentWraper = ({ children }: ContentWraperProps) => {
   return (
     <div className="bg-sky-800/10 flex-1 p-4 flex flex-col  ">
       <h1 className="font-bold text-karga">Frontend Case</h1>
@@ -23,4 +23,4 @@ const ContentCover = ({ children }: ContentCoverProps) => {
   );
 };
 
-export default ContentCover;
+export default ContentWraper;
