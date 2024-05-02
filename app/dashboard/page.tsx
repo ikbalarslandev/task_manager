@@ -1,5 +1,7 @@
+import DashboardContentComponent from "@/components/dashboard/content";
+
 const DashboardPage = () => {
-  return <div className="border border-black flex-1"></div>;
+  return <DashboardContentComponent />;
 };
 
 export default DashboardPage;

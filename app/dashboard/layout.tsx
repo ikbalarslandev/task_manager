@@ -1,6 +1,6 @@
 import HeaderComponent from "@/components/dashboard/header";
 import SideBarComponent from "@/components/dashboard/sidebar";
-import ContentWraper from "@/components/dashboard/content/content-wraper";
+import ContentWraper from "@/components/dashboard/content/components/content-wraper";
 
 export default function DashboardLayout({
   children,
