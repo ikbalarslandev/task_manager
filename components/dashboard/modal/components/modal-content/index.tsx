@@ -1,10 +1,12 @@
-import { Button } from "@/components/ui/button";
+import ModalHeader from "./components/modal-header";
+import DetailsComponent from "./components/details-component";
 
 const ModalContent = ({ handleClose }: any) => {
   return (
     <div>
-      <h1>Modal Content</h1>
-      <Button onClick={handleClose}>Close</Button>
+      <ModalHeader handleClose={handleClose} />
+      <div className="bg-gray-300  h-[1px] "></div>
+      <DetailsComponent />
     </div>
   );
 };

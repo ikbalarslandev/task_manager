@@ -9,6 +9,7 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
+        none: " border p-0 text-3xl",
         nav: "rounded-none border  border-gray-300  text-gray-600 bg-white ",
         default: "bg-primary text-primary-foreground hover:bg-primary/90",
         destructive:

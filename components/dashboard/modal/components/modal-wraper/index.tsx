@@ -17,7 +17,7 @@ const ModalWraper = ({ children }: any) => {
 
   return createPortal(
     <div className="fixed top-0 left-0 flex items-center justify-center w-full h-full bg-gray-800 bg-opacity-75 backdrop-blur-sm">
-      <div className="bg-white p-6 rounded-lg shadow-md mx-10 max-w-[1000px]">
+      <div className="bg-white rounded-lg shadow-md mx-5 w-full max-w-[1000px]">
         {children}
       </div>
     </div>,
