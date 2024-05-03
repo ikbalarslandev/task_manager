@@ -18,7 +18,7 @@ const ContentWraper = ({ children }: ContentWraperProps) => {
           Other
         </Button>
       </div>
-      <div className="flex-1  flex">{children}</div>
+      <div className="flex-1  flex ">{children}</div>
     </div>
   );
 };
