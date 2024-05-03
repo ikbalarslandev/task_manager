@@ -4,7 +4,7 @@ import TasksComponent from "./components/tasks";
 const BoardItem = ({ item }: any) => {
   return (
     <ItemWraper item={item}>
-      <TasksComponent />
+      <TasksComponent data={item.tasks} />
     </ItemWraper>
   );
 };
