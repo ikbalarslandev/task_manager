@@ -1,9 +1,9 @@
 import ItemWraper from "./components/item-wraper";
 import TasksComponent from "./components/tasks";
 
-const BoardItem = () => {
+const BoardItem = ({ item }: any) => {
   return (
-    <ItemWraper>
+    <ItemWraper item={item}>
       <TasksComponent />
     </ItemWraper>
   );
